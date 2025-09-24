@@ -3,9 +3,6 @@ import cors from 'cors'
 import { connectionDB } from './DB/connection.js'
 import { config } from 'dotenv'
 import path from 'path'
-import multer from 'multer'
-import { multerFunction } from './src/Services/multerLocally.js'
-import { allowedExtensions } from './src/utils/allowedExtention.js'
 import userRouter from './src/module/user/user.route.js'
 import productRouter from './src/module/product/product.route .js'
 import cartRouter from './src/module/cart/cart.route.js'
@@ -35,9 +32,9 @@ app.use('/orders', orderRouter)
 
 
 
-app.post('/uploads', multerFunction(allowedExtensions.Image).single('Image'), (req, res, next) => {
-    res.json({ message: 'uploaded' })
-})
+// app.post('/uploads', multerFunction(allowedExtensions.Image).single('Image'), (req, res, next) => {
+//     res.json({ message: 'uploaded' })
+// })
 
 
 // app.all('*', (req, res, next) =>
