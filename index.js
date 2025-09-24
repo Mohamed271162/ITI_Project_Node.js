@@ -31,7 +31,7 @@ app.get("/", (req, res) => {
         message: "E-Commerce API is running!",
         timestamp: new Date().toISOString(),
         database:
-            mongoose.connection.readyState === 1 ? "Connected" : "Disconnected",
+            connectionDB(),
         environment: process.env.NODE_ENV,
     });
 });
