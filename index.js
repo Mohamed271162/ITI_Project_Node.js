@@ -24,9 +24,16 @@ const globalResponse = (err, req, res, next) => {
 app.use(cors())
 app.use(express.json())
 
-app.get('/', (req, res, next) => {
-    res.json({ message: 'Hello In my Project' })
-})
+
+app.get("/", (req, res) => {
+    res.json({
+        message: "E-Commerce API is running!",
+        timestamp: new Date().toISOString(),
+        database:
+            mongoose.connection.readyState === 1 ? "Connected" : "Disconnected",
+        environment: process.env.NODE_ENV,
+    });
+});
 
 
 app.use('/auth', userRouter)
@@ -47,9 +54,10 @@ app.use('/orders', orderRouter)
 
 app.use(globalResponse)
 
-// app.listen(port, () => {
-//     console.log(`Server is running on port ${port}`)
-// })
-app.listen(process.env.PORT, () => {
-    console.log(`Server is running on port ${process.env.PORT}`)
-})
+if (process.env.NODE_ENV === 'development') {
+    app.listen(port, () => {
+        console.log(`Server is running on port ${port}`)
+    })
+}
+
+export default app
