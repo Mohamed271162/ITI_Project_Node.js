@@ -24,6 +24,9 @@ const globalResponse = (err, req, res, next) => {
 app.use(cors())
 app.use(express.json())
 
+app.get('/', (req, res, next) => {
+    res.json({ message: 'Hello In my Project' })
+})
 
 
 app.use('/auth', userRouter)
