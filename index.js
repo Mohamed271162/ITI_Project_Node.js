@@ -3,6 +3,7 @@ import cors from 'cors'
 import { connectionDB } from './DB/connection.js'
 import { config } from 'dotenv'
 import path from 'path'
+
 import userRouter from './src/module/user/user.route.js'
 import productRouter from './src/module/product/product.route .js'
 import cartRouter from './src/module/cart/cart.route.js'
@@ -46,4 +47,6 @@ app.use(globalResponse)
 // app.listen(port, () => {
 //     console.log(`Server is running on port ${port}`)
 // })
-export default app
+app.listen(process.env.PORT, () => {
+    console.log(`Server is running on port ${process.env.PORT}`)
+})
