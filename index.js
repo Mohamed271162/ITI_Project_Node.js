@@ -3,6 +3,7 @@ import cors from 'cors'
 import { connectionDB } from './DB/connection.js'
 import { config } from 'dotenv'
 import path from 'path'
+import mongoose from 'mongoose'
 
 import userRouter from './src/module/user/user.route.js'
 import productRouter from './src/module/product/product.route .js'
